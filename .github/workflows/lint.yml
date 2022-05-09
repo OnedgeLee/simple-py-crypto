@@ -12,6 +12,9 @@ jobs:
           python-version: "3.9"
           architecture: "x64"
       - uses: psf/black@stable
+        with:
+          options: ""
+          src: "."
       - name: Check format with isort
         run: |
           pip install isort
@@ -19,7 +22,7 @@ jobs:
       - name: Check format with yapf
         run: |
           pip install yapf
-          yapf -rd .
+          yapf -ri .
       - name: Check format with pylint
         run: |
           pip install pylint
