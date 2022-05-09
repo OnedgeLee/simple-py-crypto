@@ -13,9 +13,7 @@ class ECDSA:
 
     def __init__(self) -> None:
         self.__ec_type: Secp256k1 = secp256k1
-        self.__gen_point: EllipticCurvePoint = EllipticCurvePoint(
-            self.__ec_type.gx, self.__ec_type.gy, self.__ec_type
-        )
+        self.__gen_point: EllipticCurvePoint = EllipticCurvePoint(self.__ec_type.gx, self.__ec_type.gy, self.__ec_type)
 
     @property
     def ec_type(self) -> Secp256k1:
