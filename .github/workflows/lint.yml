@@ -12,6 +12,9 @@ jobs:
           python-version: "3.9"
           architecture: "x64"
       - uses: psf/black@stable
+        with:
+          options: ""
+          src: "."
       - name: Check format with isort
         run: |
           pip install isort

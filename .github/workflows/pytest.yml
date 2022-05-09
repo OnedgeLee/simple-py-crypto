@@ -15,4 +15,5 @@ jobs:
         timeout-minutes: 5
         run: |
           pip install pytest
+          pip install -e .
           python -m pytest -W ignore::DeprecationWarning
