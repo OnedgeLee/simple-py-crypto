@@ -22,7 +22,7 @@ jobs:
       - name: Check format with yapf
         run: |
           pip install yapf
-          yapf -rd .
+          yapf -ri .
       - name: Check format with pylint
         run: |
           pip install pylint
