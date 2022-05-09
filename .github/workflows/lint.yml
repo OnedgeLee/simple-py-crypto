@@ -1,0 +1,27 @@
+name: lint
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.9"
+          architecture: "x64"
+      - uses: psf/black@stable
+      - name: Check format with isort
+        run: |
+          pip install isort
+          isort -c .
+      - name: Check format with yapf
+        run: |
+          pip install yapf
+          yapf -rd .
+      - name: Check format with pylint
+        run: |
+          pip install pylint
+          pylint pycrypto
+          pylint tests --disable=redefined-outer-name
