@@ -2,8 +2,7 @@
 """
 
 from secrets import randbelow
-from types import NoneType
-from typing import Union
+from typing import Optional
 
 from pycrypto.libs.ec_types import Secp256k1
 from pycrypto.libs.ec_types import secp256k1
@@ -59,7 +58,7 @@ class ECDSA:
 
         return hex((self.gen_point * int(private_key, 16)).x)
 
-    def keygen(self, private_key: Union[NoneType, str] = None) -> str:
+    def keygen(self, private_key: Optional[str] = None) -> str:
         """Key pair generation
 
         Args:
