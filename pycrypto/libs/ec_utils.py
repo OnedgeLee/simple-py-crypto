@@ -137,7 +137,7 @@ class EllipticCurvePoint(Point):
         Returns:
             EllipticCurvePoint: Result of elliptic curve point addition
         """
-        if not isinstance(type(point.ec_type), self.ec_type):
+        if not isinstance(point.ec_type, type(self.ec_type)):
             raise TypeError("Type of point is not same with current instance")
         if self.coord == point.coord:
             s = (3 * (self.x**2) + self.ec_type.a) / (2 * self.y)
