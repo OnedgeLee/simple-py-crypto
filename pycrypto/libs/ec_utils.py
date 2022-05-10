@@ -50,9 +50,8 @@ def gcd_extended(a: int, b: int) -> tuple:
     """
     if b == 0:
         return a, 1, 0
-    else:
-        gcd, x_t, y_t = gcd_extended(b, a % b)
-        return gcd, y_t, x_t - ((a // b) * y_t)
+    gcd, x_t, y_t = gcd_extended(b, a % b)
+    return gcd, y_t, x_t - ((a // b) * y_t)
 
 
 def mod_inv(a: int, m: int) -> int:
