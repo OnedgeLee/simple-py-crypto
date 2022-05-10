@@ -50,9 +50,8 @@ def gcd_extended(a: int, b: int) -> tuple:
     """
     if b == 0:
         return a, 1, 0
-    else:
-        gcd, x_t, y_t = gcd_extended(b, a % b)
-        return gcd, y_t, x_t - ((a // b) * y_t)
+    gcd, x_t, y_t = gcd_extended(b, a % b)
+    return gcd, y_t, x_t - ((a // b) * y_t)
 
 
 def mod_inv(a: int, m: int) -> int:
@@ -138,7 +137,7 @@ class EllipticCurvePoint(Point):
         Returns:
             EllipticCurvePoint: Result of elliptic curve point addition
         """
-        if not isinstance(type(point.ec_type), self.ec_type):
+        if not isinstance(point.ec_type, type(self.ec_type)):
             raise TypeError("Type of point is not same with current instance")
         if self.coord == point.coord:
             s = (3 * (self.x**2) + self.ec_type.a) / (2 * self.y)
