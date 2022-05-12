@@ -149,7 +149,8 @@ class SHA256:
         Returns:
             list: list containing chunks(bytearray)
         """
-        pass
+        chunks = [msg[i * 64:(i + 1) * 64] for i in range(len(msg) // 64)]
+        return chunks
 
     @staticmethod
     def create_message_schedule(chunk):
