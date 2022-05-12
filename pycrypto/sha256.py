@@ -117,7 +117,8 @@ class SHA256:
     def preprocessing(msg: bytearray) -> bytearray:
         """Preprocessing method for message
         1. Append single 1 to binary message
-        2. Pad 0s until data is a multiple of 512, less 64 bits (512 * n - 64)
+        2. Pad 0s until data is a multiple of 512(64 byte), less 64(8 byte) bits
+           (512bit * n - 64bit), (64byte * n - 8byte)
         3. Append 64 bits to the end,
            where the 64 bits are a big-endian integer
            representing the length of the original input in binary
@@ -129,7 +130,13 @@ class SHA256:
         Returns:
             bytearray: Preprocessed byte array
         """
-        pass
+        msg_len = len(msg)
+        msg.append(0b10000000)
+        pad_length = -(msg_len + 1 + 8) % 64
+        for _ in range(pad_length):
+            msg.append(0)
+        msg.extend((msg_len * 8).to_bytes(8, "big"))
+        return msg
 
     @staticmethod
     def chunking(msg: bytearray) -> list:
